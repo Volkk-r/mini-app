@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route, HashRouter } from 'react-router-dom';
 import LoginForm from './components/Login';
 import AllEvents from './events/allEvents';
 import MyEvents from './components/MyEvents';
@@ -12,17 +12,17 @@ function App() {
   return (
     <UserProvider>
       <MyEventsProvider>
-        <BrowserRouter>
+        <HashRouter>
           <Routes>
             <Route path="/" element={<LoginForm />} />
-            <Route element={<AppLayout />}> 
+            <Route element={<AppLayout />}>
               <Route path="/allEvents" element={<AllEvents />} />
               <Route path="/my" element={<MyEvents />} />
               <Route path="/events/:id" element={<EventDetail />} />
               <Route path="/account" element={<Account />} />
             </Route>
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </MyEventsProvider>
     </UserProvider>
   );
