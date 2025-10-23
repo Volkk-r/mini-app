@@ -1,0 +1,181 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+.login-form {
+  width: 100%;
+  max-width: 400px;
+  margin: 10px;
+}
+
+.login-form input {
+  padding: 10px;
+  font-size: 16px;
+  outline: none;
+}
+
+.submit-btn {
+  width: 95%;
+  padding: 16px 10px 16px 10px;
+  background: #007AFF;
+  border: 1px solid #e6e6e6;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 15px;
+  box-sizing: border-box;
+  transition: background 0.2s;
+  margin: 0 10px 0 10px;
+  color: #fff;
+}
+
+.input-wrapper {
+  width: 100%;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.input-hint {
+  position: static;
+  color: #e74c3c;
+  font-size: 12px;
+  margin-top: 0;
+  margin-bottom: 8px;
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  min-width: 0;
+  max-width: 100%;
+  opacity: 1;
+  transition: opacity 0.2s;
+  word-break: break-word;
+}
+
+.input-hint::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%) rotate(180deg);
+  border-width: 7px 7px 0 7px;
+  border-style: solid;
+  border-color: #e74c3c transparent transparent transparent;
+  display: block;
+}
+
+.input-wrapper input {
+  width: 100%;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0.01em;
+  border: 1px solid #e6e6e6;
+  border-radius: 15px;
+  margin-bottom: 8px;
+  border: 1.80px solid rgba(0, 0, 0, 0.05);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.events-grid {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input-wrapper label {
+  position: absolute;
+  left: 16px;
+  top: 19px;
+  color: #e6e6e6;
+  background: #fff;
+  padding: 0 4px;
+  font-size: 16px;
+  pointer-events: none;
+  transition: 0.2s;
+  z-index: 1;
+}
+
+.input-wrapper input:focus+label,
+.input-wrapper input:not(:placeholder-shown)+label,
+.login-form:focus-within .input-wrapper label {
+  top: -10px;
+  left: 8px;
+  color: #A2ACB0;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 147%;
+  letter-spacing: 0.01em;
+}
+
+
+.input-wrapper input:focus {
+  border-color: #646cff;
+}
+
+/* Стили для полей с ошибкой авторизации */
+.input-wrapper.input-error input {
+  border-color: #e74c3c;
+  box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2);
+}
+
+.input-wrapper.input-error input:focus {
+  border-color: #e74c3c;
+  box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.3);
+}
+
+.fixed-submit-btn {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 24px;
+  display: flex;
+  justify-content: center;
+  background: #007AFF;
+}
+
+.fixed-submit-btn .submit-btn {
+  border-radius: 12px;
+  padding: 15px 12px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  pointer-events: auto;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 153%;
+  letter-spacing: 0.01em;
+  text-align: center;
+  color: #fff;
+}
+
+.submit-btn--disabled {
+  background: #b3d1ff;
+  color: #fff;
+  border: 1px solid #e6e6e6;
+  cursor: not-allowed;
+}
+
+/* Лейбл поднимается, если поле автозаполнено браузером */
+.input-wrapper input:-webkit-autofill+label,
+.input-wrapper input:-moz-autofill+label {
+  top: 6px;
+  transform: none;
+  font-size: 12px;
+  color: #555;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 9999s ease-in-out 0s, color 9999s ease-in-out 0s;
+  -webkit-text-fill-color: #000 !important;
+}

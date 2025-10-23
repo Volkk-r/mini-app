@@ -1,0 +1,25 @@
+.edit-menu{
+    display: flex;
+    flex-direction: column;
+    gap: 12px; 
+}
+.edit-change-photo{
+    margin-bottom: 2px;
+    font-size: 12px;
+    color: #1f6feb;
+    background: none;
+    border: none;
+    cursor: pointer;
+    align-self: flex-start;
+}
+
+.edit-row{ display: flex; gap: 8px; align-items: stretch; flex-wrap: wrap; }
+.edit-input{ padding: 10px 12px; border: 1px solid #e5e7eb; border-radius: 10px; background: #f9fafb; width: 100%; box-sizing: border-box;}
+.edit-input--small{ flex: 1 1 260px; }
+.edit-field-label{ position: absolute; left: 12px; top: 0; transform: translateY(-50%); background: #fff; padding: 0 6px; color: #A2ACB0; font-size: 14px; }
+.edit-checkbox-list{ display: flex; gap: 8px; flex-wrap: wrap; padding: 6px; border: 1px solid #e5e7eb; border-radius: 10px; background: #f9fafb; }
+.edit-checkbox-item{ display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 12px; background: #f3f4f6; cursor: pointer; }
+.edit-checkbox-item input{ accent-color: #1f6feb; }
+.edit-checkbox-item--checked{ background: #eef2ff; color: #1f6feb; }
+
+

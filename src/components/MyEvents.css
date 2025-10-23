@@ -1,0 +1,188 @@
+.my-events-container {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 15px;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+  padding: 4px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #333;
+  cursor: pointer;
+  padding: 4px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Вкладки - сегментированный контрол */
+.tabs-container {
+  display: flex;
+  background-color: #f0f0f0;
+  border-radius: 25px;
+  padding: 4px;
+  margin: 16px 15px;
+  position: relative;
+}
+
+.tab {
+  flex: 1;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  transition: color 0.3s ease;
+  border-radius: 20px;
+}
+
+.tab.active {
+  color: #000;
+  font-weight: 600;
+}
+
+/* Белая "пилюля" для активной вкладки */
+.tabs-container::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 50%;
+  bottom: 4px;
+  background-color: white;
+  border-radius: 20px;
+  transition: transform 0.3s ease;
+  z-index: 1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Анимация перемещения "пилюли" для второй вкладки */
+.tabs-container.past-active::before {
+  transform: translateX(100%);
+}
+
+/* Список событий */
+.my-event-card {
+  display: flex;
+  flex-direction: column; /* вертикальная карточка */
+  background-color: white;
+  border-radius: 12px;
+  padding: 0; /* внутренние отступы перенесены в нижний блок */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden; /* скругления для верхнего цвета */
+}
+
+.my-event-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Цветной плейсхолдер */
+.event-placeholder {
+  width: 100%;
+  height: 120px;
+  border-radius: 12px 12px 0 0; /* скругления сверху */
+  margin-right: 0;
+  flex-shrink: 0;
+}
+
+/* Информация о событии */
+.event-info {
+  flex: 1;
+  min-width: 0;
+  padding: 16px; /* переносим паддинг сюда */
+}
+
+.event-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 4px 0;
+  line-height: 1.3;
+}
+
+.event-date {
+  font-size: 14px;
+  color: #666;
+  margin: 0 0 4px 0;
+}
+
+.event-company {
+  font-size: 13px;
+  color: #999;
+  margin: 0;
+}
+
+/* Кнопка удаления */
+.remove-event-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #ff4444;
+  cursor: pointer;
+  padding: 4px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.remove-event-button:hover {
+  background-color: rgba(255, 68, 68, 0.1);
+}
+
+/* Пустые состояния */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+}
+
+.empty-state p {
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+.empty-tab-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #666;
+}
+
+.empty-tab-state p {
+  margin: 0;
+  font-size: 14px;
+}

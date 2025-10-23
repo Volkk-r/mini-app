@@ -1,0 +1,82 @@
+.event-detail-container {
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 70px;
+  background: #fff;
+}
+
+.event-detail-header {
+  height: 256px;
+  position: relative;
+  z-index: 1;
+}
+
+.event-detail-grid {
+  position: relative;
+  z-index: 10;
+  border-radius: 40px 40px 0 0;
+}
+
+
+/* Карточка детали поверх шапки */
+.event-detail-card {
+  max-width: 600px;
+  margin: -24px auto 0 auto; /* немного нахлёст на шапку */
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* Контейнер информации */
+.event-detail-info {
+  background: #fff;
+  padding: 16px 14px 16px 14px;
+}
+
+.event-detail-title {
+    font-size: 24px;
+    font-weight: 590;
+    margin-bottom: 8px;
+}
+
+.chips-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  background: #F1F1F4;
+  color: #666;
+}
+
+.chip--muted {
+  background: #EFEFF4;
+  color: #666;
+}
+
+.event-detail-description {
+  font-size: 15px;
+  line-height: 22px;
+  color: #707579;
+  margin-bottom: 16px;
+}
+
+.cta-button {
+  display: block;
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  background: linear-gradient(180deg, #FFB04D, #FF9500);
+}
+
+

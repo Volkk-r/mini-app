@@ -1,0 +1,143 @@
+.events-header {
+    height: 470px;
+    position: relative;
+    z-index: 1;
+}
+
+.events-header-title{
+    display: flex;
+    padding-top: 20px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#events-header-title-type{
+    font-size: 64px;
+    background:  linear-gradient(132deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: rgba(255, 255, 255, 0.72);
+    background-clip: text;
+}
+
+/* Дополнительные стили для контента внутри хедера */
+.events-header h1 {
+    color: white;
+    font-size: 32px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    display: flex;
+    margin: auto;
+    justify-content: center;
+}
+
+/* Фигура и фото в хедере */
+.header-figure{
+    position: relative;
+    width: 280px;
+    height: 280px;
+}
+.header-figure-blob{
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.18);
+    border-radius: 52% 48% 46% 54% / 40% 44% 56% 60%;
+    transform: rotate(-12deg) scale(1.05);
+    filter: blur(0.3px);
+}
+.header-figure-photo{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50% 50% 45% 55% / 58% 42% 58% 42%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+/* Разные формы по разделам */
+.shape-events .header-figure-blob{ border-radius: 52% 48% 46% 54% / 40% 44% 56% 60%; transform: rotate(-12deg) scale(1.05); }
+.shape-events .header-figure-photo{ border-radius: 48% 52% 42% 58% / 54% 46% 60% 40%; }
+
+.shape-olympiad .header-figure-blob{ border-radius: 36% 64% 48% 52% / 50% 34% 66% 50%; transform: rotate(6deg) scale(1.06); }
+.shape-olympiad .header-figure-photo{ border-radius: 40% 60% 44% 56% / 60% 40% 55% 45%; }
+
+.shape-contest .header-figure-blob{ border-radius: 28% 72% 32% 68% / 38% 62% 38% 62%; transform: rotate(-4deg) scale(1.04); }
+.shape-contest .header-figure-photo{ border-radius: 32% 68% 36% 64% / 42% 58% 42% 58%; }
+
+.shape-intern .header-figure-blob{ border-radius: 60% 40% 58% 42% / 45% 55% 35% 65%; transform: rotate(14deg) scale(1.05); }
+.shape-intern .header-figure-photo{ border-radius: 62% 38% 56% 44% / 52% 48% 42% 58%; }
+
+.shape-vacancy .header-figure-blob{ border-radius: 24% 76% 70% 30% / 48% 52% 28% 72%; transform: rotate(-18deg) scale(1.05); }
+.shape-vacancy .header-figure-photo{ border-radius: 28% 72% 66% 34% / 54% 46% 32% 68%; }
+
+.shape-default .header-figure-blob{ border-radius: 50%; transform: none; }
+.shape-default .header-figure-photo{ border-radius: 50%; }
+
+.back-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 12px 20px;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+.back-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Сетка событий */
+.events-grid {
+    position: relative;
+    z-index: 10;
+    margin-top: -35px;
+    padding: 40px 16px;
+    gap: 20px;
+    background: #fff;
+    border-radius: 40px 40px 0 0;
+}
+
+/* Стили для пустого состояния */
+.no-events {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+    color: #666;
+    font-size: 18px;
+    text-align: center;
+}
+
+/* Контейнер страницы */
+.events-by-type-container {
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 70px;
+}
+
+/* Нижняя навигация */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    background: #fff;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1000;
+}
+
+.bottom-nav .nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #333;
+    cursor: pointer;
+    user-select: none;
+}
