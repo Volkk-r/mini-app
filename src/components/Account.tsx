@@ -42,51 +42,91 @@ function Account() {
   }
 
   return (
-    <div className="account-container">
+    <div className={`account-container ${isEditing ? 'is-editing' : ''}`}>
       <div className="account-card">
         <div className="account-header">
-          <div
-            className="account-avatar-wrapper"
-            onClick={() => {
-              // Вход в режим редактирования по клику на кнопку у аватара
-              setIsEditing(true);
-              setForm({
-                fullName: user.fullName,
-                age: String(user.age),
-                direction: user.direction,
-                course: user.course,
-                website: user.website ?? '',
-                username: user.username,
-                email: user.email,
-                phone: user.phone ?? '',
-                about: user.about ?? '',
-                techStack: (user.techStack ?? []).join(', '),
-              });
-            }}
-            role="button"
-            aria-label="Редактировать профиль"
-            tabIndex={0}
-          >
-            <img className="account-avatar" src={user.avatarUrl} alt={user.fullName} />
-            <span className="account-avatar-edit"><img src={edit} alt="" /></span>
+          {/* Правый верхний угол: в просмотре — ✎; в редактировании — ✕ и ✓ */}
+          <div className="account-header-actions">
+            {!isEditing ? (
+              <button
+                type="button"
+                className="account-action edit"
+                aria-label="Редактировать профиль"
+                onClick={() => setIsEditing(true)}
+              >
+                <img src={edit} alt="" />
+              </button>
+            ) : (
+              <>
+                <button
+                  type="button"
+                  className="account-action cancel"
+                  aria-label="Отменить"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsEditing(false);
+                    // откат формы к данным пользователя
+                    setForm({
+                      fullName: user.fullName,
+                      age: String(user.age),
+                      direction: user.direction,
+                      course: user.course,
+                      website: user.website ?? '',
+                      username: user.username,
+                      email: user.email,
+                      phone: user.phone ?? '',
+                      about: user.about ?? '',
+                      techStack: (user.techStack ?? []).join(', '),
+                    });
+                  }}
+                >
+                  ✕
+                </button>
+                <button
+                  type="button"
+                  className="account-action save"
+                  aria-label="Сохранить"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const updates = {
+                      fullName: form.fullName,
+                      age: Number(form.age) || user.age,
+                      direction: directionTags.join(', '),
+                      course: form.course,
+                      website: form.website,
+                      username: form.username,
+                      email: form.email,
+                      phone: form.phone,
+                      about: form.about,
+                      techStack: techTags,
+                    };
+                    updateUserProfile(updates);
+                    setIsEditing(false);
+                  }}
+                >
+                  ✓
+                </button>
+              </>
+            )}
           </div>
-          <input
-            ref={fileInputRef}
-            type="file"
-            accept="image/*"
-            capture="environment"
-            style={{ display: 'none' }}
-            onChange={async (e) => {
-              const file = e.target.files?.[0];
-              if (!file) return;
-              const reader = new FileReader();
-              reader.onload = () => {
-                const dataUrl = String(reader.result ?? '');
-                updateUserProfile({ avatarUrl: dataUrl });
-              };
-              reader.readAsDataURL(file);
-            }}
-          />
+
+          {/* Аватар по центру */}
+          <div className="account-avatar-wrapper">
+            <img className="account-avatar" src={user.avatarUrl} alt={user.fullName} />
+          </div>
+
+          {/* Подпись под аватаром только в редактировании */}
+          {isEditing && (
+            <button
+              type="button"
+              className="account-change-photo"
+              onClick={() => fileInputRef.current?.click()}
+            >
+              Выбрать новую фотографию
+            </button>
+          )}
+
+          {/* Дальше оставляем как было: EditMenu в редактировании, иначе имя+мета */}
           <div className="account-name">
             {isEditing ? (
               <EditMenu
@@ -95,11 +135,6 @@ function Account() {
                 availableDirections={AVAILABLE_DIRECTIONS}
                 directionTags={directionTags}
                 setDirectionTags={setDirectionTags}
-                techTags={techTags}
-                setTechTags={setTechTags}
-                tagInput={tagInput}
-                setTagInput={setTagInput}
-                onChangePhoto={() => fileInputRef.current?.click()}
               />
             ) : (
               <>
@@ -204,52 +239,6 @@ function Account() {
                 ))}
               </div>
             )}
-          </div>
-        )}
-
-        {isEditing && (
-          <div className="account-actions">
-            <button
-              className="account-btn cancel"
-              onClick={(e) => {
-                e.preventDefault();
-                setIsEditing(false);
-                setForm({
-                  fullName: user.fullName,
-                  age: String(user.age),
-                  direction: user.direction,
-                  course: user.course,
-                  website: user.website ?? '',
-                  username: user.username,
-                  email: user.email,
-                  phone: user.phone ?? '',
-                  about: user.about ?? '',
-                  techStack: (user.techStack ?? []).join(', '),
-                });
-                setDirectionTags(user.direction ? user.direction.split(/[,;/]\s*/).filter(Boolean) : ['Frontend']);
-                setTechTags(user.techStack ?? ['React']);
-              }}
-            >Отмена</button>
-            <button
-              className="account-btn save"
-              onClick={(e) => {
-                e.preventDefault();
-                const updates = {
-                  fullName: form.fullName,
-                  age: Number(form.age) || user.age,
-                  direction: directionTags.join(', '),
-                  course: form.course,
-                  website: form.website,
-                  username: form.username,
-                  email: form.email,
-                  phone: form.phone,
-                  about: form.about,
-                  techStack: techTags,
-                };
-                updateUserProfile(updates);
-                setIsEditing(false);
-              }}
-            >Сохранить</button>
           </div>
         )}
       </div>

@@ -1,18 +1,63 @@
 .account-card {
   padding: 16px;
-  min-height: 100vh;
-  /* высота экрана минус нижнее меню и паддинги контейнера */
+  padding-bottom: 76px; 
 }
 
+/* --- Верхняя часть профиля --- */
 .account-header {
+  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 12px;
 }
 
+.account-header-actions {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  display: flex;
+  gap: 8px;
+  z-index: 5;
+}
+
+/* Кнопки управления */
+.account-action {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  background: #f3f4f6;
+  color: #111827;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.12s ease, background-color 0.12s ease;
+}
+
+.account-action:hover {
+  transform: translateY(-1px);
+}
+
+.account-action.edit img {
+  width: 20px;
+  height: 20px;
+}
+
+.account-action.cancel {
+  background: #f3f4f6;
+}
+
+.account-action.save {
+  background: #1f6feb;
+  color: #fff;
+}
+
+/* Аватар и подпись */
 .account-avatar-wrapper {
   position: relative;
+  display: grid;
+  place-items: center;
   cursor: pointer;
 }
 
@@ -30,7 +75,7 @@
   width: 35px;
   height: 35px;
   border-radius: 20%;
-  background: #4378FF1A;
+  background: #4378ff1a;
   color: #fff;
   display: flex;
   align-items: center;
@@ -39,6 +84,17 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
+.account-change-photo {
+  margin-top: 8px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #1f6feb;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Имя и подписи */
 .account-name {
   text-align: center;
 }
@@ -48,7 +104,6 @@
   font-size: 17px;
   line-height: 153%;
   letter-spacing: 0.01em;
-  text-align: center;
 }
 
 .account-meta {
@@ -57,40 +112,156 @@
   font-size: 16px;
   line-height: 150%;
   letter-spacing: 0.01em;
-  text-align: center;
 }
 
-.account-edit-row {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  margin-top: 8px;
-  flex-wrap: wrap;
+/* --- Поля ввода --- */
+.account-fields {
+  margin-top: 16px;
+  display: grid;
+  gap: 12px;
+}
+
+.account-fields label {
+  display: none;
+}
+
+.account-fields input {
   width: 100%;
-  align-items: stretch;
-}
-
-.account-edit-input {
-  padding: 10px 12px;
+  padding: 16px;
   border: 1px solid #e5e7eb;
   border-radius: 10px;
-  background: #f9fafb;
-  width: 100%;
+  background: #fff;
+  color: #111827;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0.01em;
+  -webkit-appearance: none;
+  background-clip: padding-box;
   box-sizing: border-box;
-  flex: 1 1 260px;
+  z-index: 1;
 }
 
-.account-edit-input.small {
-  flex: 1 1 260px;
+/* Текстовая область со скроллом */
+.textarea-scroll {
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #fff;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  box-sizing: border-box;
 }
 
-.account-change-photo {
-  margin-bottom: 10px;
-  font-size: 12px;
+.textarea-scroll textarea {
+  display: block;
+  width: 100%;
+  min-height: 135px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0.01em;
+  color: #111827;
+  border: none;
+  outline: none;
+  resize: none;
+  background: transparent;
+  overflow: visible;
+  z-index: 1;
+  -webkit-appearance: none;
+  background-clip: padding-box;
+}
+
+/* Лейблы над полями */
+.field {
+  position: relative;
+  margin-top: 12px;
+}
+
+.field-label {
+  position: absolute;
+  left: 12px;
+  top: 0;
+  transform: translateY(-50%);
+  background: #fff;
+  padding: 0 6px;
+  color: #a2acb0;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  z-index: 3;
+  pointer-events: none;
+  display: inline-block;
+}
+
+/* --- Сайт пользователя --- */
+.account-website-field {
+  position: relative;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.account-website-input {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(67, 120, 255, 0.05);
   color: #1f6feb;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0.01em;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.account-website-copy {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
   background: none;
   border: none;
+  font-size: 16px;
   cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  min-height: 24px;
+}
+
+.account-website-copy.copied:hover {
+  background: #059669;
+}
+
+/* --- Теги и чекбоксы --- */
+.account-tags {
+  margin-top: 16px;
+}
+
+.account-tags-title {
+  font-size: 16px;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+
+.account-tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.account-tag {
+  padding: 12px 20px;
+  background: #f3f4f6;
+  border-radius: 12px;
+  font-size: 16px;
 }
 
 .chip-input {
@@ -166,167 +337,7 @@
   color: #1f6feb;
 }
 
-.field {
-  position: relative;
-  margin-top: 12px;
-}
-
-.field-label {
-  position: absolute;
-  left: 12px;
-  top: 0;
-  transform: translateY(-50%);
-  background: #fff;
-  padding: 0 6px;
-  color: #a2acb0;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 1;
-  /* исключаем странности высоты на iOS */
-  letter-spacing: .01em;
-  z-index: 3;
-  /* <<< ключ: поверх инпута */
-  pointer-events: none;
-  /* чтобы не мешал фокусу инпута */
-  display: inline-block;
-  /* чтобы фон реально «плашкой» рисовался */
-}
-
-.account-website-field {
-  position: relative;
-  width: 100%;
-  margin: 20px 0;
-}
-
-.account-website-input {
-  width: 100%;
-  padding: 16px;
-  border: none;
-  border-radius: 10px;
-  background: rgba(67, 120, 255, 0.05);
-  color: #1f6feb;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 150%;
-  letter-spacing: 0.01em;
-  box-sizing: border-box;
-  cursor: pointer;
-}
-
-.account-website-copy {
-  position: absolute;
-  right: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  font-size: 16px;
-  cursor: pointer;
-  padding: 4px;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 24px;
-  min-height: 24px;
-}
-
-.account-website-copy.copied:hover {
-  background: #059669;
-}
-
-.account-fields {
-  margin-top: 16px;
-  display: grid;
-  gap: 12px;
-}
-
-.account-fields label {
-  display: none;
-}
-
-.account-fields input {
-  width: 100%;
-  border: 1.80px solid rgba(0, 0, 0, 0.05);
-  border-radius: 14px;
-  padding: 16px;
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
-  background: #fff;
-  color: #111827;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 150%;
-  letter-spacing: 0.01em;
-  -webkit-appearance: none;
-  /* iOS: убираем нативные эффекты */
-  background-clip: padding-box;
-  z-index: 1;
-}
-
-.textarea-scroll {
-  padding: 16px;
-  /* ← вот твои «внутренние» отступы */
-  border: 1.80px solid rgba(0, 0, 0, 0.05);
-  border-radius: 10px;
-  background: #fff;
-  max-height: none;
-  /* или другое ограничение по макету */
-  overflow-y: auto;
-  /* ← скролл здесь */
-  -webkit-overflow-scrolling: touch;
-  /* плавный скролл на iOS */
-  box-sizing: border-box;
-}
-
-/* сам textarea не скроллит и не рисует свой фон/рамку */
-.textarea-scroll textarea {
-  display: block;
-  width: 100%;
-  min-height: 135px;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 150%;
-  letter-spacing: 0.01em;
-  color: #111827;
-  /* чтобы не конфликтовать с max-height родителя */
-  border: none;
-  outline: none;
-  resize: none;
-  /* чтобы не сломать контейнер, можно включить при желании */
-  background: transparent;
-  overflow: visible;
-  /* отключаем внутренний скролл textarea */
-  z-index: 1;
-  -webkit-appearance: none;
-  /* iOS: убираем нативные эффекты */
-  background-clip: padding-box;
-}
-
-.account-tags {
-  margin-top: 16px;
-}
-
-.account-tags-title {
-  font-size: 16px;
-  color: #6b7280;
-  margin-bottom: 8px;
-}
-
-.account-tags-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.account-tag {
-  padding: 12px 20px;
-  background: #f3f4f6;
-  border-radius: 12px;
-  font-size: 16px;
-}
-
+/* --- Кнопки сохранения профиля --- */
 .account-actions {
   display: flex;
   gap: 12px;
@@ -351,8 +362,7 @@
   color: #fff;
 }
 
-/* Safari iOS делает текст серым в disabled/readonly инпутах.
-   Явно переопределяем через -webkit-text-fill-color */
+/* --- iOS фиксы для disabled/readonly --- */
 .account-fields input[disabled],
 .account-fields textarea[disabled],
 .account-fields input[readonly],
@@ -360,12 +370,13 @@
   color: #111827 !important;
   -webkit-text-fill-color: #111827 !important;
   opacity: 1 !important;
-  /* отменяет автоматическое “бледнение” */
 }
 
-/* Чтобы фон не становился серым */
 .account-fields input[disabled],
 .account-fields textarea[disabled] {
   background: #fff !important;
   cursor: default;
 }
+
+/* --- Контейнер с состоянием редактирования --- */
+.account-container.is-editing {}
