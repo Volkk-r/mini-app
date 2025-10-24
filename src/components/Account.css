@@ -178,11 +178,18 @@
   transform: translateY(-50%);
   background: #fff;
   padding: 0 6px;
-  color: #A2ACB0;
+  color: #a2acb0;
   font-weight: 400;
   font-size: 15px;
-  line-height: 147%;
-  letter-spacing: 0.01em;
+  line-height: 1;
+  /* исключаем странности высоты на iOS */
+  letter-spacing: .01em;
+  z-index: 3;
+  /* <<< ключ: поверх инпута */
+  pointer-events: none;
+  /* чтобы не мешал фокусу инпута */
+  display: inline-block;
+  /* чтобы фон реально «плашкой» рисовался */
 }
 
 .account-website-field {
@@ -253,6 +260,10 @@
   font-size: 16px;
   line-height: 150%;
   letter-spacing: 0.01em;
+  -webkit-appearance: none;
+  /* iOS: убираем нативные эффекты */
+  background-clip: padding-box;
+  z-index: 1;
 }
 
 .account-tags {
