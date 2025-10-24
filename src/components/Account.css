@@ -1,6 +1,6 @@
 .account-card {
   padding: 16px;
-  min-height: calc(100vh - 60px - 24px);
+  min-height: 100vh;
   /* высота экрана минус нижнее меню и паддинги контейнера */
 }
 
@@ -246,8 +246,7 @@
   display: none;
 }
 
-.account-fields input,
-.account-fields textarea {
+.account-fields input {
   width: 100%;
   border: 1.80px solid rgba(0, 0, 0, 0.05);
   border-radius: 14px;
@@ -264,6 +263,45 @@
   /* iOS: убираем нативные эффекты */
   background-clip: padding-box;
   z-index: 1;
+}
+
+.textarea-scroll {
+  padding: 16px;
+  /* ← вот твои «внутренние» отступы */
+  border: 1.80px solid rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  background: #fff;
+  max-height: none;
+  /* или другое ограничение по макету */
+  overflow-y: auto;
+  /* ← скролл здесь */
+  -webkit-overflow-scrolling: touch;
+  /* плавный скролл на iOS */
+  box-sizing: border-box;
+}
+
+/* сам textarea не скроллит и не рисует свой фон/рамку */
+.textarea-scroll textarea {
+  display: block;
+  width: 100%;
+  min-height: 135px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0.01em;
+  color: #111827;
+  /* чтобы не конфликтовать с max-height родителя */
+  border: none;
+  outline: none;
+  resize: none;
+  /* чтобы не сломать контейнер, можно включить при желании */
+  background: transparent;
+  overflow: visible;
+  /* отключаем внутренний скролл textarea */
+  z-index: 1;
+  -webkit-appearance: none;
+  /* iOS: убираем нативные эффекты */
+  background-clip: padding-box;
 }
 
 .account-tags {
@@ -311,4 +349,23 @@
 .account-btn.save {
   background: #1f6feb;
   color: #fff;
+}
+
+/* Safari iOS делает текст серым в disabled/readonly инпутах.
+   Явно переопределяем через -webkit-text-fill-color */
+.account-fields input[disabled],
+.account-fields textarea[disabled],
+.account-fields input[readonly],
+.account-fields textarea[readonly] {
+  color: #111827 !important;
+  -webkit-text-fill-color: #111827 !important;
+  opacity: 1 !important;
+  /* отменяет автоматическое “бледнение” */
+}
+
+/* Чтобы фон не становился серым */
+.account-fields input[disabled],
+.account-fields textarea[disabled] {
+  background: #fff !important;
+  cursor: default;
 }

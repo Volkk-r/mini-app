@@ -110,35 +110,35 @@ function Account() {
           </div>
         </div>
 
-          <div className="account-website-field field">
-            <input 
-              type="text" 
-              value={isEditing ? form.website : (user.website ?? '')} 
-              readOnly={!isEditing}
-              className="account-website-input"
-              onChange={(e) => updateField('website', e.target.value)}
-              onClick={() => { if (!isEditing && user.website) window.open(user.website, '_blank'); }}
-              placeholder="Ссылка на портфолио"
-            />
-            {!isEditing && user.website && (
-              <button 
-                className={`account-website-copy ${isCopied ? 'copied' : ''}`}
-                onClick={async (e) => {
-                  e.stopPropagation();
-                  try {
-                    await navigator.clipboard.writeText(user.website || '');
-                    setIsCopied(true);
-                    setTimeout(() => setIsCopied(false), 2000);
-                  } catch (err) {
-                    console.error('Ошибка копирования:', err);
-                  }
-                }}
-                title={isCopied ? "Скопировано!" : "Копировать ссылку"}
-              >
-                {isCopied ? <img src={cop} alt="" /> : <img src={copy} alt="" />}
-              </button>
-            )}
-          </div>
+        <div className="account-website-field field">
+          <input
+            type="text"
+            value={isEditing ? form.website : (user.website ?? '')}
+            readOnly={!isEditing}
+            className="account-website-input"
+            onChange={(e) => updateField('website', e.target.value)}
+            onClick={() => { if (!isEditing && user.website) window.open(user.website, '_blank'); }}
+            placeholder="Ссылка на портфолио"
+          />
+          {!isEditing && user.website && (
+            <button
+              className={`account-website-copy ${isCopied ? 'copied' : ''}`}
+              onClick={async (e) => {
+                e.stopPropagation();
+                try {
+                  await navigator.clipboard.writeText(user.website || '');
+                  setIsCopied(true);
+                  setTimeout(() => setIsCopied(false), 2000);
+                } catch (err) {
+                  console.error('Ошибка копирования:', err);
+                }
+              }}
+              title={isCopied ? "Скопировано!" : "Копировать ссылку"}
+            >
+              {isCopied ? <img src={cop} alt="" /> : <img src={copy} alt="" />}
+            </button>
+          )}
+        </div>
         <div className="account-fields">
           <div className="field">
             <div className="field-label">Username</div>
@@ -157,8 +157,16 @@ function Account() {
 
           <div className="field">
             <div className="field-label">О себе</div>
-            <textarea disabled={!isEditing} rows={5} value={isEditing ? form.about : (user.about ?? '')} onChange={(e) => updateField('about', e.target.value)} />
+            <div className={`textarea-scroll ${!isEditing ? 'is-disabled' : ''}`}>
+              <textarea
+                disabled={!isEditing}
+                rows={5}
+                value={isEditing ? form.about : (user.about ?? '')}
+                onChange={(e) => updateField('about', e.target.value)}
+              />
+            </div>
           </div>
+
         </div>
 
         {user.techStack && user.techStack.length > 0 && (
