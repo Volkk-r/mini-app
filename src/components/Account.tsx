@@ -3,10 +3,8 @@ import { useUser } from '../context/UserContext';
 import { useRef, useState } from 'react';
 import './Account.css';
 import './EditMenu.css';
-import edit from '../img/edit_24.svg';
-import copy from '../img/copy.svg';
-import cop from '../img/cop.svg';
 import EditMenu from './EditMenu.tsx';
+import { IconCop, IconCopy, IconEdit } from '../icon/icons.tsx';
 
 function Account() {
   const { user, updateUserProfile } = useUser();
@@ -54,7 +52,7 @@ function Account() {
                 aria-label="Редактировать профиль"
                 onClick={() => setIsEditing(true)}
               >
-                <img src={edit} alt="" />
+                <IconEdit/>
               </button>
             ) : (
               <>
@@ -170,7 +168,7 @@ function Account() {
               }}
               title={isCopied ? "Скопировано!" : "Копировать ссылку"}
             >
-              {isCopied ? <img src={cop} alt="" /> : <img src={copy} alt="" />}
+              {isCopied ? <IconCop/> : <IconCopy/>}
             </button>
           )}
         </div>
