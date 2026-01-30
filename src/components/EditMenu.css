@@ -160,3 +160,20 @@ select.account-edit-input {
     padding-right: 32px;
     cursor: pointer;
 }
+
+.view-field-value {
+  padding: 8px 0;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.edit-toggle-btn {
+  margin-bottom: 20px;
+  padding: 8px 16px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
