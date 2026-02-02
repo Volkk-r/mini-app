@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useUser } from '../context/UserContext';
-import { IconEye, IconEyeOff } from '../icon/icons';
-import styled from '@emotion/styled';
-import { css } from '@emotion/react';
-
-const MOCK_LOGIN = 'test@test.test';
-const MOCK_PASSWORD = 'test12';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useUser } from "../context/UserContext";
+import { IconEye, IconEyeOff } from "../icon/icons";
+import styled from "@emotion/styled";
+import { css } from "@emotion/react";
+import { MOCK_LOGIN, MOCK_PASSWORD } from "../mock/mock";
+import { MOCK_USERID } from "../mock/mock";
 
 const emailRegex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
-const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?`~]{6,}$/;
+const passwordRegex =
+  /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?`~]{6,}$/;
 
 const LoginContainer = styled.div`
   display: flex;
@@ -31,10 +31,10 @@ const Form = styled.form`
     outline: none;
   }
 
-   label {
+  label {
     top: -10px;
     left: 8px;
-    color: #A2ACB0;
+    color: #a2acb0;
     font-weight: 600;
     font-size: 15px;
     line-height: 147%;
@@ -53,7 +53,7 @@ const InputWrapper = styled.div<{ error: boolean }>`
     font-size: 16px;
     line-height: 150%;
     letter-spacing: 0.01em;
-    border: 1.80px solid rgba(0, 0, 0, 0.05);
+    border: 1.8px solid rgba(0, 0, 0, 0.05);
     border-radius: 14px;
     padding: 16px;
     margin-bottom: 8px;
@@ -76,7 +76,7 @@ const InputWrapper = styled.div<{ error: boolean }>`
   input:not(:placeholder-shown) + label {
     top: -10px;
     left: 8px;
-    color: #A2ACB0;
+    color: #a2acb0;
     font-weight: 600;
     font-size: 15px;
     line-height: 147%;
@@ -99,21 +99,25 @@ const InputWrapper = styled.div<{ error: boolean }>`
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
   input:-webkit-autofill:active {
-    transition: background-color 9999s ease-in-out 0s, color 9999s ease-in-out 0s;
+    transition:
+      background-color 9999s ease-in-out 0s,
+      color 9999s ease-in-out 0s;
     -webkit-text-fill-color: #000 !important;
   }
 
-  ${({ error }) => error && css`
-    input {
-      border-color: #e74c3c;
-      box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2);
-    }
+  ${({ error }) =>
+    error &&
+    css`
+      input {
+        border-color: #e74c3c;
+        box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2);
+      }
 
-    input:focus {
-      border-color: #e74c3c;
-      box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.3);
-    }
-  `}
+      input:focus {
+        border-color: #e74c3c;
+        box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.3);
+      }
+    `}
 `;
 
 const InputHint = styled.div`
@@ -134,7 +138,7 @@ const InputHint = styled.div`
   text-align: center;
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     left: 50%;
     top: 100%;
@@ -153,7 +157,7 @@ const SubmitButton = styled.button<{ disabled: boolean }>`
   bottom: 24px;
   display: flex;
   justify-content: center;
-  background: #007AFF;
+  background: #007aff;
   width: 100%;
   max-width: 400px;
   margin: 0 auto;
@@ -170,26 +174,28 @@ const SubmitButton = styled.button<{ disabled: boolean }>`
   transition: background 0.2s;
   pointer-events: auto;
 
-  ${({ disabled }) => disabled && css`
-    background: #b3d1ff;
-    color: #fff;
-    border: 1px solid #e6e6e6;
-    cursor: not-allowed;
-  `}
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      background: #b3d1ff;
+      color: #fff;
+      border: 1px solid #e6e6e6;
+      cursor: not-allowed;
+    `}
 `;
 
 const LoginForm: React.FC = () => {
-  const [login, setLogin] = useState('');
-  const [password, setPassword] = useState('');
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
-  const [authMessage, setAuthMessage] = useState('');
+  const [authMessage, setAuthMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isAuthError, setIsAuthError] = useState(false);
   const navigate = useNavigate();
   const { fetchUserProfile } = useUser();
 
-  const isFormFilled = login.trim() !== '' && password.trim() !== '';
+  const isFormFilled = login.trim() !== "" && password.trim() !== "";
 
   // Валидация полей
   const validate = () => {
@@ -198,7 +204,7 @@ const LoginForm: React.FC = () => {
     setLoginError(false);
     setPasswordError(false);
     setIsAuthError(false);
-    setAuthMessage('');
+    setAuthMessage("");
 
     if (!emailRegex.test(login)) {
       setLoginError(true);
@@ -228,14 +234,13 @@ const LoginForm: React.FC = () => {
       // const { userId } = await response.json();
 
       // Пока используем моковый userId
-      const userId = '1';
 
       // Загружаем профиль пользователя с бэка
-      await fetchUserProfile(userId);
-      navigate('/account');
+      await fetchUserProfile(MOCK_USERID);
+      navigate("/account");
     } else {
       setIsAuthError(true);
-      setAuthMessage('Неверный логин или пароль');
+      setAuthMessage("Неверный логин или пароль");
     }
   };
 
@@ -245,7 +250,7 @@ const LoginForm: React.FC = () => {
     if (loginError) setLoginError(false);
     if (isAuthError) {
       setIsAuthError(false);
-      setAuthMessage('');
+      setAuthMessage("");
     }
   };
 
@@ -254,7 +259,7 @@ const LoginForm: React.FC = () => {
     if (passwordError) setPasswordError(false);
     if (isAuthError) {
       setIsAuthError(false);
-      setAuthMessage('');
+      setAuthMessage("");
     }
   };
 
@@ -262,11 +267,29 @@ const LoginForm: React.FC = () => {
     <LoginContainer>
       <Form id="login-form" onSubmit={handleSubmit}>
         {/* ловушки для автозаполнения — не мешают сабмиту и не совпадают по name */}
-        <input type="text" autoComplete="username" tabIndex={-1}
-          style={{ position: 'absolute', left: '-9999px', height: 0, width: 0, opacity: 0 }}
+        <input
+          type="text"
+          autoComplete="username"
+          tabIndex={-1}
+          style={{
+            position: "absolute",
+            left: "-9999px",
+            height: 0,
+            width: 0,
+            opacity: 0,
+          }}
         />
-        <input type="password" autoComplete="current-password" tabIndex={-1}
-          style={{ position: 'absolute', left: '-9999px', height: 0, width: 0, opacity: 0 }}
+        <input
+          type="password"
+          autoComplete="current-password"
+          tabIndex={-1}
+          style={{
+            position: "absolute",
+            left: "-9999px",
+            height: 0,
+            width: 0,
+            opacity: 0,
+          }}
         />
 
         {/* Логин */}
@@ -290,7 +313,7 @@ const LoginForm: React.FC = () => {
         <div className="form-group">
           <InputWrapper error={isAuthError || passwordError}>
             <input
-              type={showPassword ? 'text' : 'password'}
+              type={showPassword ? "text" : "password"}
               id="password"
               name="password"
               autoComplete="off"
@@ -303,21 +326,21 @@ const LoginForm: React.FC = () => {
             {/* Кнопка-глаз */}
             <button
               type="button"
-              onClick={() => setShowPassword(v => !v)}
+              onClick={() => setShowPassword((v) => !v)}
               style={{
-                position: 'absolute',
+                position: "absolute",
                 right: 16,
-                top: '50%',
-                transform: 'translateY(-50%)',
-                background: 'none',
-                border: 'none',
-                cursor: 'pointer',
+                top: "50%",
+                transform: "translateY(-50%)",
+                background: "none",
+                border: "none",
+                cursor: "pointer",
                 padding: 0,
                 fontSize: 18,
-                color: '#A2ACB0'
+                color: "#A2ACB0",
               }}
               tabIndex={-1}
-              aria-label={showPassword ? 'Скрыть пароль' : 'Показать пароль'}
+              aria-label={showPassword ? "Скрыть пароль" : "Показать пароль"}
             >
               {showPassword ? <IconEye /> : <IconEyeOff />}
             </button>
@@ -325,11 +348,7 @@ const LoginForm: React.FC = () => {
         </div>
 
         {/* Сообщение об ошибке авторизации */}
-        {authMessage && (
-          <InputHint>
-            {authMessage}
-          </InputHint>
-        )}
+        {authMessage && <InputHint>{authMessage}</InputHint>}
 
         {/* Кнопка входа */}
         <SubmitButton type="submit" disabled={!isFormFilled}>
