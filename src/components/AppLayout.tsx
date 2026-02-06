@@ -1,16 +1,46 @@
-import { Outlet } from 'react-router-dom';
-import BottomNav from './BottomNav';
+import { Outlet, useLocation } from 'react-router-dom';
+import BottomNav from './BottomNav';     
+import Header from './Header';          
 import '../index.css';
 
-function AppLayout() {
+
+
+ export default function AppLayout() {
+  const location = useLocation();
+  const path = location.pathname;
+
+  const getTitle = () => {
+    switch (path) {
+      case '/allEvents':
+        return 'События';
+
+      case '/my':
+        return 'Мои события';          
+
+      case '/account':
+        return 'Аккаунт';
+
+      default:
+        if (path.startsWith('/events/')) {
+          return 'Детали события';
+        }
+
+        return 'Приложение';
+    }
+  };
+
+
   return (
-    <div>
-      <Outlet />
+    <div className="app-layout-wrapper">  
+      <Header 
+        title={getTitle()} 
+   
+      />
+
+      <main style={{ paddingTop: '56px', paddingBottom: '60px' }}> 
+        <Outlet />
+      </main>
       <BottomNav />
     </div>
   );
 }
-
-export default AppLayout;
-
-
