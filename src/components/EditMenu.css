@@ -1,162 +1,160 @@
 .edit-menu {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .edit-change-photo {
-    margin-bottom: 2px;
-    font-size: 12px;
-    color: #1f6feb;
-    background: none;
-    border: none;
-    cursor: pointer;
-    align-self: flex-start;
+  margin-bottom: 2px;
+  font-size: 12px;
+  color: #1f6feb;
+  background: none;
+  border: none;
+  cursor: pointer;
+  align-self: flex-start;
 }
 
 .edit-row {
-    display: flex;
-    gap: 8px;
-    align-items: stretch;
-    flex-wrap: wrap;
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+  flex-wrap: wrap;
 }
 
 .edit-input {
-    padding: 10px 12px;
-    border: 1px solid #e5e7eb;
-    border-radius: 10px;
-    background: #f9fafb;
-    width: 100%;
-    box-sizing: border-box;
+  padding: 10px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #f9fafb;
+  width: 100%;
 }
 
 .edit-input--small {
-    flex: 1 1 260px;
+  flex: 1 1 260px;
 }
 
 .edit-field-label {
-    position: absolute;
-    left: 12px;
-    top: 0;
-    transform: translateY(-50%);
-    background: #fff;
-    padding: 0 6px;
-    color: #A2ACB0;
-    font-size: 14px;
+  position: absolute;
+  left: 12px;
+  top: 0;
+  transform: translateY(-50%);
+  background: #fff;
+  padding: 0 6px;
+  color: #a2acb0;
+  font-size: 14px;
 }
 
 .edit-checkbox-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    padding: 16px;
-    border: 1px solid #e5e7eb;
-    border-radius: 10px;
-    background: #fff;
-    margin-top: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #fff;
+  margin-top: 4px;
 }
 
 .edit-checkbox-item {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 10px;
-    border-radius: 12px;
-    background: #f3f4f6;
-    cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 12px;
+  background: #f3f4f6;
+  cursor: pointer;
 }
 
 .edit-checkbox-item input {
-    accent-color: #1f6feb;
+  accent-color: #1f6feb;
 }
 
 .edit-checkbox-item--checked {
-    background: #eef2ff;
-    color: #1f6feb;
+  background: #eef2ff;
+  color: #1f6feb;
 }
 
 /* строка возраста/курса */
 .edit-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 /* поля одинаковые с account-field */
 .field {
-    position: relative;
+  position: relative;
 }
 
-
 .field-label {
-    position: absolute;
-    left: 12px;
-    top: 0;
-    transform: translateY(-50%);
-    background: #fff;
-    padding: 0 6px;
-    color: #a2acb0;
-    font-size: 15px;
-    line-height: 1;
-    pointer-events: none;
-    z-index: 3;
+  position: absolute;
+  left: 12px;
+  top: 0;
+  transform: translateY(-50%);
+  background: #fff;
+  padding: 0 6px;
+  color: #a2acb0;
+  font-size: 15px;
+  line-height: 1;
+  pointer-events: none;
+  z-index: 3;
 }
 
 .field.small {
-    flex: 1 1 0;
-    /* ← равномерно делит ширину */
-    min-width: 0;
-    /* ← важно: не даёт переполнения */
+  flex: 1 1 0;
+  /* ← равномерно делит ширину */
+  min-width: 0;
+  /* ← важно: не даёт переполнения */
 }
 
 .account-edit-input {
-    width: 100%;
-    border: 1px solid #e5e7eb;
-    border-radius: 10px;
-    background: #fff;
-    padding: 16px;
-    font-size: 16px;
-    color: #111827;
-    box-sizing: border-box;
+  width: 100%;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #fff;
+  padding: 16px;
+  font-size: 16px;
+  color: #111827;
 }
 
 .edit-checkbox-item {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 10px;
-    border-radius: 12px;
-    background: #f3f4f6;
-    cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 12px;
+  background: #f3f4f6;
+  cursor: pointer;
 }
 
 .edit-checkbox-item input {
-    accent-color: #1f6feb;
+  accent-color: #1f6feb;
 }
 
 .edit-checkbox-item--checked {
-    background: #eef2ff;
-    color: #1f6feb;
+  background: #eef2ff;
+  color: #1f6feb;
 }
 
 .account-edit-input {
-    width: 100%;
-    border: 1px solid #e5e7eb;
-    border-radius: 10px;
-    background: #fff;
-    padding: 16px;
-    font-size: 16px;
-    color: #111827;
-    box-sizing: border-box;
-    appearance: none;
-    /* убираем системные стрелки */
-    background-clip: padding-box;
+  width: 100%;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #fff;
+  padding: 16px;
+  font-size: 16px;
+  color: #111827;
+  appearance: none;
+  /* убираем системные стрелки */
+  background-clip: padding-box;
 }
 
 /* Добавляем свою стрелку для select */
 select.account-edit-input {
-    background: #fff url("data:image/svg+xml,%3Csvg width='10' height='6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0l5 6 5-6H0z' fill='%2399A3A9'/%3E%3C/svg%3E") no-repeat right 12px center;
-    background-size: 10px 6px;
-    padding-right: 32px;
-    cursor: pointer;
+  background: #fff
+    url("data:image/svg+xml,%3Csvg width='10' height='6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0l5 6 5-6H0z' fill='%2399A3A9'/%3E%3C/svg%3E")
+    no-repeat right 12px center;
+  background-size: 10px 6px;
+  padding-right: 32px;
+  cursor: pointer;
 }

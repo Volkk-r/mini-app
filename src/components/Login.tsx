@@ -17,7 +17,6 @@ const LoginContainer = styled.div`
   align-items: center;
   min-height: 100vh;
   font-family: Arial, sans-serif;
-  box-sizing: border-box;
 `;
 
 const Form = styled.form`

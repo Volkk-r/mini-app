@@ -4,7 +4,6 @@
   align-items: center;
   min-height: 100vh;
   font-family: Arial, sans-serif;
-  box-sizing: border-box;
 }
 
 .login-form {
@@ -22,13 +21,12 @@
 .submit-btn {
   width: 95%;
   padding: 16px 10px 16px 10px;
-  background: #007AFF;
+  background: #007aff;
   border: 1px solid #e6e6e6;
   font-size: 16px;
   cursor: pointer;
   margin-top: 10px;
   border-radius: 15px;
-  box-sizing: border-box;
   transition: background 0.2s;
   margin: 0 10px 0 10px;
   color: #fff;
@@ -58,7 +56,7 @@
 }
 
 .input-hint::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 50%;
   top: 100%;
@@ -78,7 +76,7 @@
   border: 1px solid #e6e6e6;
   border-radius: 15px;
   margin-bottom: 8px;
-  border: 1.80px solid rgba(0, 0, 0, 0.05);
+  border: 1.8px solid rgba(0, 0, 0, 0.05);
   border-radius: 14px;
   padding: 16px;
 }
@@ -103,18 +101,17 @@
   z-index: 1;
 }
 
-.input-wrapper input:focus+label,
-.input-wrapper input:not(:placeholder-shown)+label,
+.input-wrapper input:focus + label,
+.input-wrapper input:not(:placeholder-shown) + label,
 .login-form:focus-within .input-wrapper label {
   top: -10px;
   left: 8px;
-  color: #A2ACB0;
+  color: #a2acb0;
   font-weight: 600;
   font-size: 15px;
   line-height: 147%;
   letter-spacing: 0.01em;
 }
-
 
 .input-wrapper input:focus {
   border-color: #646cff;
@@ -138,7 +135,7 @@
   bottom: 24px;
   display: flex;
   justify-content: center;
-  background: #007AFF;
+  background: #007aff;
 }
 
 .fixed-submit-btn .submit-btn {
@@ -164,8 +161,8 @@
 }
 
 /* Лейбл поднимается, если поле автозаполнено браузером */
-.input-wrapper input:-webkit-autofill+label,
-.input-wrapper input:-moz-autofill+label {
+.input-wrapper input:-webkit-autofill + label,
+.input-wrapper input:-moz-autofill + label {
   top: 6px;
   transform: none;
   font-size: 12px;
@@ -176,6 +173,8 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  transition: background-color 9999s ease-in-out 0s, color 9999s ease-in-out 0s;
+  transition:
+    background-color 9999s ease-in-out 0s,
+    color 9999s ease-in-out 0s;
   -webkit-text-fill-color: #000 !important;
 }

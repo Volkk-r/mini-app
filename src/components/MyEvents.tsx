@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useMyEvents } from '../context/MyEventsContext';
 import { useNavigate } from 'react-router-dom';
-import '../events/AllEvents.css';
+// import '../events/AllEvents.css';
 import './EventsByType.css';
 import './MyEvents.css';
 

@@ -1,3 +1,4 @@
+import type { EventItem } from "../types/events";
 import type { UserProfile } from "../types/user";
 
 // логин
@@ -30,3 +31,157 @@ export const MOCK_USER: UserProfile = {
     telegram: "@sigdingo",
   },
 };
+
+export const bannerSlides = [
+  {
+    id: 1,
+    title: "Олимпиады",
+    type: "Олимпиада",
+  },
+  {
+    id: 2,
+    title: "Конкурсы",
+    type: "Конкурс",
+  },
+  {
+    id: 3,
+    title: "Стажировки",
+    type: "Стажировка",
+  },
+  {
+    id: 4,
+    title: "Вакансии",
+    type: "Вакансия",
+  },
+  {
+    id: 5,
+    title: "События",
+    type: "События",
+  },
+];
+
+export const mockEvents: EventItem[] = [
+  {
+    id: "1",
+    title: "Олимпиада по математике",
+    type: "Олимпиада",
+    company: 'ООО "ЛучшийИнфоГигант"',
+    date: "30 октября 17:00",
+    isNew: true,
+    tags: ["Frontend", "2024"],
+  },
+  {
+    id: "2",
+    title: "Олимпиада по физике",
+    type: "Олимпиада",
+    company: 'ООО "Наука"',
+    date: "до 20 ноября",
+    isNew: true,
+    tags: ["Backend"],
+  },
+  {
+    id: "3",
+    title: "Конкурс программирования",
+    type: "Конкурс",
+    company: 'ООО "Наука"',
+    date: "30 октября 17:00",
+    isNew: true,
+    tags: ["Backend"],
+  },
+  {
+    id: "4",
+    title: "Стажировка в IT компании",
+    type: "Стажировка",
+    company: 'ООО "Наука"',
+    date: "27 октября 17:00",
+    tags: ["Backend"],
+  },
+  {
+    id: "5",
+    title: "Вакансия разработчика",
+    type: "Вакансия",
+    company: 'ООО "Наука"',
+    date: "до 1 ноября",
+    tags: ["Backend"],
+  },
+  {
+    id: "6",
+    title: "Вакансия разработчика",
+    type: "События",
+    company: 'ООО "Наука"',
+    date: "1 октября 17:00",
+    tags: ["Backend"],
+  },
+  {
+    id: "7",
+    title: "Конкурс программирования",
+    type: "Конкурс",
+    company: 'ООО "Наука"',
+    date: "15 декабря 14:00",
+    isNew: true,
+    tags: ["Backend"],
+  },
+];
+
+export const fallbackEvents: EventItem[] = [
+  {
+    id: "1",
+    title: "Олимпиада по математике",
+    type: "Олимпиада",
+    company: 'ООО "ЛучшийИнфоГигант"',
+    date: "30 октября 17:00",
+    isNew: true,
+    tags: ["Frontend", "2024"],
+  },
+  {
+    id: "2",
+    title: "Олимпиада по физике",
+    type: "Олимпиада",
+    company: 'ООО "Наука"',
+    date: "до 20 ноября",
+    isNew: true,
+    tags: ["Backend"],
+  },
+  {
+    id: "3",
+    title: "Конкурс программирования",
+    type: "Конкурс",
+    company: 'ООО "Наука"',
+    date: "30 октября 17:00",
+    isNew: true,
+    tags: ["Backend"],
+  },
+  {
+    id: "4",
+    title: "Стажировка в IT компании",
+    type: "Стажировка",
+    company: 'ООО "Наука"',
+    date: "27 октября 17:00",
+    tags: ["Backend"],
+  },
+  {
+    id: "5",
+    title: "Вакансия разработчика",
+    type: "Вакансия",
+    company: 'ООО "Наука"',
+    date: "до 1 ноября",
+    tags: ["Backend"],
+  },
+  {
+    id: "6",
+    title: "Вакансия разработчика",
+    type: "События",
+    company: 'ООО "Наука"',
+    date: "1 октября 17:00",
+    tags: ["Backend"],
+  },
+  {
+    id: "7",
+    title: "Конкурс программирования",
+    type: "Конкурс",
+    company: 'ООО "Наука"',
+    date: "15 декабря 14:00",
+    isNew: true,
+    tags: ["Backend"],
+  },
+];
