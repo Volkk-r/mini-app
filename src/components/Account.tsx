@@ -5,7 +5,7 @@ import { IconCop, IconCopy, IconEdit } from '../icon/icons.tsx';
 
 
 const AccountContainer = styled.div<{ isEditing: boolean }>`
-  padding: 16px;
+
   ${props => props.isEditing && `background: white;`}
 `;
 
