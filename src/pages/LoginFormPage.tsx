@@ -26,7 +26,7 @@ const Form = styled.form`
   margin: 10px;
 
   input {
-    padding: 10px;
+    padding: 12px 16px;
     font-size: 16px;
     outline: none;
   }
@@ -45,7 +45,7 @@ const Form = styled.form`
 const InputWrapper = styled.div<{ error: boolean }>`
   width: 100%;
   position: relative;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 
   input {
     width: 100%;
@@ -53,9 +53,9 @@ const InputWrapper = styled.div<{ error: boolean }>`
     font-size: 16px;
     line-height: 150%;
     letter-spacing: 0.01em;
-    border: 1.8px solid rgba(0, 0, 0, 0.05);
+    border: 2px solid rgba(0, 0, 0, 0.05);
     border-radius: 14px;
-    padding: 16px;
+    12px 16px;
     margin-bottom: 8px;
   }
 
@@ -76,15 +76,15 @@ const InputWrapper = styled.div<{ error: boolean }>`
   input:not(:placeholder-shown) + label {
     top: -10px;
     left: 8px;
-    color: #a2acb0;
+    color: #007AFF;
     font-weight: 600;
     font-size: 15px;
     line-height: 147%;
     letter-spacing: 0.01em;
   }
-
+ 
   input:focus {
-    border-color: #646cff;
+    border-color: #007AFF;
   }
 
   input:-webkit-autofill + label,
@@ -109,20 +109,23 @@ const InputWrapper = styled.div<{ error: boolean }>`
     error &&
     css`
       input {
-        border-color: #e74c3c;
-        box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2);
+        border-color: #e53935 !important;
+        border-width: 2px !important;
       }
 
       input:focus {
-        border-color: #e74c3c;
-        box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.3);
+        border-color: #e53935 !important;
+      }
+
+      label {
+        color: #e53935 !important;
       }
     `}
 `;
 
 const InputHint = styled.div`
   position: static;
-  color: #e74c3c;
+  color: #e53935;
   font-size: 12px;
   margin-top: 0;
   margin-bottom: 8px;
@@ -136,18 +139,6 @@ const InputHint = styled.div`
   transition: opacity 0.2s;
   word-break: break-word;
   text-align: center;
-
-  &::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 100%;
-    transform: translateX(-50%) rotate(180deg);
-    border-width: 7px 7px 0 7px;
-    border-style: solid;
-    border-color: #e74c3c transparent transparent transparent;
-    display: block;
-  }
 `;
 
 const SubmitButton = styled.button<{ disabled: boolean }>`
@@ -157,7 +148,7 @@ const SubmitButton = styled.button<{ disabled: boolean }>`
   bottom: 24px;
   display: flex;
   justify-content: center;
-  background: #007aff;
+  background: ${({ disabled }) => (disabled ? "#b3d1ff" : "#007aff")};
   width: 100%;
   max-width: 400px;
   margin: 0 auto;
@@ -170,18 +161,34 @@ const SubmitButton = styled.button<{ disabled: boolean }>`
   text-align: center;
   color: #fff;
   border: 1px solid #e6e6e6;
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   transition: background 0.2s;
   pointer-events: auto;
+`;
 
-  ${({ disabled }) =>
-    disabled &&
-    css`
-      background: #b3d1ff;
-      color: #fff;
-      border: 1px solid #e6e6e6;
-      cursor: not-allowed;
-    `}
+const EyeButton = styled.button`
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 18px;
+  color: #a2acb0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+
+  &:hover {
+    color: #646cff;
+  }
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 const LoginPage: React.FC = () => {
@@ -200,6 +207,7 @@ const LoginPage: React.FC = () => {
   // Валидация полей
   const validate = () => {
     let valid = true;
+    
     // Сброс ошибок при новой попытке
     setLoginError(false);
     setPasswordError(false);
@@ -229,13 +237,6 @@ const LoginPage: React.FC = () => {
 
     // Если валидация прошла, проверяем авторизацию
     if (login === MOCK_LOGIN && password === MOCK_PASSWORD) {
-      // TODO: В реальном приложении здесь будет запрос к API для получения userId
-      // const response = await fetch('/api/auth/login', { ... });
-      // const { userId } = await response.json();
-
-      // Пока используем моковый userId
-
-      // Загружаем профиль пользователя с бэка
       await fetchUserProfile(MOCK_USERID);
       navigate("/account");
     } else {
@@ -294,11 +295,11 @@ const LoginPage: React.FC = () => {
 
         {/* Логин */}
         <div className="form-group">
-          <InputWrapper error={isAuthError || loginError}>
+          <InputWrapper error={loginError}>
             <input
               type="email"
               id="login"
-              name="login" // не "username", чтобы не конфликтовать с ловушкой
+              name="login"
               autoComplete="off"
               value={login}
               onChange={handleLoginChange}
@@ -311,7 +312,7 @@ const LoginPage: React.FC = () => {
 
         {/* Пароль */}
         <div className="form-group">
-          <InputWrapper error={isAuthError || passwordError}>
+          <InputWrapper error={passwordError}>
             <input
               type={showPassword ? "text" : "password"}
               id="password"
@@ -324,26 +325,14 @@ const LoginPage: React.FC = () => {
             />
             <label htmlFor="password">Пароль</label>
             {/* Кнопка-глаз */}
-            <button
+            <EyeButton
               type="button"
               onClick={() => setShowPassword((v) => !v)}
-              style={{
-                position: "absolute",
-                right: 16,
-                top: "50%",
-                transform: "translateY(-50%)",
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                padding: 0,
-                fontSize: 18,
-                color: "#A2ACB0",
-              }}
               tabIndex={-1}
               aria-label={showPassword ? "Скрыть пароль" : "Показать пароль"}
             >
               {showPassword ? <IconEye /> : <IconEyeOff />}
-            </button>
+            </EyeButton>
           </InputWrapper>
         </div>
 

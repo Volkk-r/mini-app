@@ -38,6 +38,7 @@ const HeaderContainer = styled.header`
   padding: 0 16px;
   box-sizing: border-box;
   border-bottom: 0.5px solid #d0d0d0;
+  z-index:999;
 `;
 
 const CloseButton = styled.button`
