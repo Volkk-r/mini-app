@@ -29,7 +29,8 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   });
 
   // Загрузка профиля пользователя с бэка
-  const fetchUserProfile = async (userId: string) => {
+  // было: (userId: string) => Promise<void>;
+  const fetchUserProfile = async () => {
     try {
       // TODO: Заменить на реальный API endpoint
       // const response = await fetch(`/api/users/${userId}`);
