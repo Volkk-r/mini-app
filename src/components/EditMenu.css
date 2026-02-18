@@ -151,10 +151,25 @@
 
 /* Добавляем свою стрелку для select */
 select.account-edit-input {
-  background: #fff
-    url("data:image/svg+xml,%3Csvg width='10' height='6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0l5 6 5-6H0z' fill='%2399A3A9'/%3E%3C/svg%3E")
-    no-repeat right 12px center;
-  background-size: 10px 6px;
-  padding-right: 32px;
+    background: #fff url("data:image/svg+xml,%3Csvg width='10' height='6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0l5 6 5-6H0z' fill='%2399A3A9'/%3E%3C/svg%3E") no-repeat right 12px center;
+    background-size: 10px 6px;
+    padding-right: 32px;
+    cursor: pointer;
+}
+
+.view-field-value {
+  padding: 8px 0;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.edit-toggle-btn {
+  margin-bottom: 20px;
+  padding: 8px 16px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
 }
