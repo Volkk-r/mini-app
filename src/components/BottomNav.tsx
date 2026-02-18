@@ -1,29 +1,43 @@
-import { useNavigate, useLocation } from 'react-router-dom';
-import '../events/AllEvents.css';
-import { IconChannel, IconAddHome, IconPerson } from '../icon/icons';
+import { useNavigate, useLocation } from "react-router-dom";
+import * as S from "../styles/styles.BottomNav";
+import { IconChannel, IconAddHome, IconPerson } from "../icon/icons";
 
 function BottomNav() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const isActive = (path: string) => location.pathname === path;
+
   return (
-    <div className="bottom-nav">
-      <div className="nav-item" onClick={() => navigate('/allEvents')} aria-current={location.pathname === '/allEvents'}>
-        <span role="img" aria-label="events"><IconAddHome/></span>
+    <S.BottomNav>
+      <S.NavItem
+        onClick={() => navigate("/allEvents")}
+        active={isActive("/allEvents")}
+      >
+        <span role="img" aria-label="events">
+          <IconAddHome color={isActive("/allEvents") ? "blue" : "gray"} />
+        </span>
         <div>Все ивенты</div>
-      </div>
-      <div className="nav-item" onClick={() => navigate('/my')} aria-current={location.pathname === '/my'}>
-        <span role="img" aria-label="my-events"><IconChannel/></span>
+      </S.NavItem>
+
+      <S.NavItem onClick={() => navigate("/my")} active={isActive("/my")}>
+        <span role="img" aria-label="my-events">
+          <IconChannel color={isActive("/my") ? "blue" : "gray"} />
+        </span>
         <div>Мои ивенты</div>
-      </div>
-      <div className="nav-item" onClick={() => navigate('/account')} aria-current={location.pathname === '/account'}>
-        <span role="img" aria-label="account"><IconPerson /></span>
+      </S.NavItem>
+
+      <S.NavItem
+        onClick={() => navigate("/account")}
+        active={isActive("/account")}
+      >
+        <span role="img" aria-label="account">
+          <IconPerson color={isActive("/account") ? "blue" : "gray"} />
+        </span>
         <div>Аккаунт</div>
-      </div>
-    </div>
+      </S.NavItem>
+    </S.BottomNav>
   );
 }
 
 export default BottomNav;
-
-
